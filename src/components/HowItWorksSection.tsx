@@ -31,9 +31,9 @@ const HowItWorksSection = () => {
   ];
 
   return (
-    <section id="how-it-works" className="pt-20 pb-12 md:pb-16 bg-background">
+  <section id="how-it-works" className="pt-8 pb-0 md:pb-0 bg-background">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
+  <div className="text-center mb-0">
           <h2 className="text-3xl md:text-4xl font-bold text-primary mb-4">
             How Campus Career Connect Works
           </h2>
@@ -51,7 +51,7 @@ const HowItWorksSection = () => {
             {steps.map((step, index) => {
               const IconComponent = step.icon;
               return (
-                <Card key={index} className="border-0 shadow-card hover:shadow-elegant transition-all duration-300 hover:-translate-y-2 bg-white">
+                <Card key={index} className="border border-border/80 shadow-card hover:shadow-elegant transition-all duration-300 hover:-translate-y-2 bg-white">
                   <CardContent className="p-6 text-center">
                     <div className="relative mb-6">
                       <div className={`w-16 h-16 bg-gradient-to-br ${step.color} rounded-full flex items-center justify-center mx-auto shadow-lg`}>
@@ -80,12 +80,12 @@ const HowItWorksSection = () => {
         </div>
 
         {/* Benefits Section */}
-        <div className="mt-20 bg-gradient-subtle rounded-2xl p-8">
+  <div className="mt-2 bg-gradient-subtle rounded-2xl p-8">
           <div className="text-center mb-8">
             <h3 className="text-2xl font-bold text-primary mb-4">Why Choose Our Process?</h3>
           </div>
           
-          <div className="grid md:grid-cols-3 gap-6">
+          <div className="grid md:grid-cols-3 gap-6 mt-18">
             {[
               {
                 title: "Personalized Approach",
@@ -115,7 +115,7 @@ const HowItWorksSection = () => {
             ))}
           </div>
 
-          <div className="text-center mt-8">
+          <div className="text-center mt-12">
             <Button variant="cta" size="lg">
               Start Your Journey Today
             </Button>

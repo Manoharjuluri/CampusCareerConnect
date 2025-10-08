@@ -82,18 +82,17 @@ const ContactSection = () => {
   };
 
   return (
-    <section id="contact" className="py-20 bg-gradient-subtle">
+  <section id="contact" className="pt-0 pb-20 bg-gradient-subtle" style={{marginTop: '-3.5rem'}}>
+      <div className="text-center mb-12">
+        <h2 className="text-3xl md:text-4xl font-bold text-primary mb-4">
+          Get in Touch with Us
+        </h2>
+        <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+          Ready to start your journey? Contact our expert counselors for personalized guidance 
+          and support in choosing the right college and career path.
+        </p>
+      </div>
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-primary mb-4">
-            Get in Touch with Us
-          </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Ready to start your journey? Contact our expert counselors for personalized guidance 
-            and support in choosing the right college and career path.
-          </p>
-        </div>
-
         <div className="grid lg:grid-cols-3 gap-8">
           {/* Contact Information */}
           <div className="lg:col-span-1">
