@@ -7,6 +7,49 @@ const META_PIXEL_ID = "720718777655354";
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+
+  // ---- Meta Pixel setup (runs once) ----
+  useEffect(() => {
+    // Guard for SSR & avoid duplicate injection
+    if (typeof window === "undefined") return;
+
+    // If fbq already exists, just init + track
+    if ((window as any).fbq) {
+      (window as any).fbq("init", META_PIXEL_ID);
+      (window as any).fbq("track", "PageView");
+      return;
+    }
+
+    // Bootstrap fbq (from Meta’s official snippet)
+    (function (f: any, b: Document, e: string, v: string, n?: any, t?: any, s?: any) {
+      if (f.fbq) return;
+      n = f.fbq = function () {
+        n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments);
+      };
+      if (!f._fbq) f._fbq = n;
+      n.push = n;
+      n.loaded = true;
+      n.version = "2.0";
+      n.queue = [];
+      t = b.createElement(e) as HTMLScriptElement;
+      t.async = true;
+      t.src = v;
+      s = b.getElementsByTagName(e)[0];
+      s?.parentNode?.insertBefore(t, s);
+    })(window, document, "script", "https://connect.facebook.net/en_US/fbevents.js");
+
+    (window as any).fbq("init", META_PIXEL_ID);
+    (window as any).fbq("track", "PageView");
+  }, []);
+
+  // Optional: handy wrappers to track CTA clicks
+  const track = (event: string, params?: Record<string, any>) => {
+    try {
+      (window as any)?.fbq?.("track", event, params);
+    } catch {
+      // no-op if fbq isn’t ready
+    }
+  };
  
   // ---- Meta Pixel setup (runs once) ----
   useEffect(() => {
