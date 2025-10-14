@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
 import { GraduationCap, Menu, X, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
-
+ 
 const META_PIXEL_ID = "720718777655354";
-
+ 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
@@ -50,7 +50,50 @@ const Header = () => {
       // no-op if fbq isn’t ready
     }
   };
-
+ 
+  // ---- Meta Pixel setup (runs once) ----
+  useEffect(() => {
+    // Guard for SSR & avoid duplicate injection
+    if (typeof window === "undefined") return;
+ 
+    // If fbq already exists, just init + track
+    if ((window as any).fbq) {
+      (window as any).fbq("init", META_PIXEL_ID);
+      (window as any).fbq("track", "PageView");
+      return;
+    }
+ 
+    // Bootstrap fbq (from Meta’s official snippet)
+    (function (f: any, b: Document, e: string, v: string, n?: any, t?: any, s?: any) {
+      if (f.fbq) return;
+      n = f.fbq = function () {
+        n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments);
+      };
+      if (!f._fbq) f._fbq = n;
+      n.push = n;
+      n.loaded = true;
+      n.version = "2.0";
+      n.queue = [];
+      t = b.createElement(e) as HTMLScriptElement;
+      t.async = true;
+      t.src = v;
+      s = b.getElementsByTagName(e)[0];
+      s?.parentNode?.insertBefore(t, s);
+    })(window, document, "script", "https://connect.facebook.net/en_US/fbevents.js");
+ 
+    (window as any).fbq("init", META_PIXEL_ID);
+    (window as any).fbq("track", "PageView");
+  }, []);
+ 
+  // Optional: handy wrappers to track CTA clicks
+  const track = (event: string, params?: Record<string, any>) => {
+    try {
+      (window as any)?.fbq?.("track", event, params);
+    } catch {
+      // no-op if fbq isn’t ready
+    }
+  };
+ 
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
@@ -58,7 +101,7 @@ const Header = () => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-
+ 
   const navLinks = [
     { name: "Home", href: "#home" },
     { name: "About Us", href: "#about" },
@@ -67,9 +110,9 @@ const Header = () => {
     { name: "Skill Training", href: "#trainlance" },
     { name: "Get Support", href: "#contact" },
   ];
-
+ 
   const whyUsTab = { name: "Why Us?", href: "#whyus", isWhyUs: true };
-
+ 
   const whyUsPoints = [
     "Free Career Guidance after 12th by experts",
     "Free Campus Visits to shortlisted colleges",
@@ -80,7 +123,7 @@ const Header = () => {
     "Dedicated Mentorship from admission to job offer",
     "Educational Loan Assistance through Credella",
   ];
-
+ 
   return (
     <header
       className={`sticky top-0 left-0 right-0 z-50 transition-all duration-300 ${
@@ -97,7 +140,7 @@ const Header = () => {
           alt=""
         />
       </noscript>
-
+ 
       <div className="w-full px-4">
         <div className="flex items-center h-20 w-full">
           {/* Logo and Title */}
@@ -118,7 +161,7 @@ const Header = () => {
               </p>
             </div>
           </div>
-
+ 
           {/* Main nav links */}
           <nav className="hidden lg:flex items-center gap-10 ml-8 flex-1">
             {navLinks.map((link) => (
@@ -133,7 +176,7 @@ const Header = () => {
               </a>
             ))}
           </nav>
-
+ 
           {/* Why Us? tab */}
           <div className="hidden lg:block relative group">
             <div
@@ -152,7 +195,7 @@ const Header = () => {
               </ul>
             </div>
           </div>
-
+ 
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -162,7 +205,7 @@ const Header = () => {
             {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
         </div>
-
+ 
         {/* Mobile Menu */}
         <div
           className={`lg:hidden fixed top-20 left-0 w-full bg-background shadow-lg z-40 transition-all duration-300 ${
@@ -182,7 +225,7 @@ const Header = () => {
                 {link.name}
               </a>
             ))}
-
+ 
             {/* Why Us in mobile */}
             <div className="relative">
               <div
@@ -201,7 +244,7 @@ const Header = () => {
                 </ul>
               </div>
             </div>
-
+ 
             <div className="flex flex-col space-y-3 pt-4">
               <Button
                 variant="outline"
@@ -227,5 +270,7 @@ const Header = () => {
     </header>
   );
 };
-
+ 
 export default Header;
+ 
+ 
