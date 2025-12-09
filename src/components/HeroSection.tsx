@@ -9,9 +9,10 @@ const HeroSection = () => {
       <div className="absolute inset-0 z-0">
         <img
           src={heroStudents}
-          alt="Students achieving success in their academic journey"
+          alt="Students achieving success in B.Tech college admission and career placement through Campus Career Connect"
           className="w-full h-full object-cover opacity-25"
           style={{ objectPosition: 'center bottom' }}
+          loading="lazy"
         />
       </div>
 
