@@ -9,21 +9,21 @@ const TrainlanceSection = () => {
       title: "Programming Mastery",
       description: "Learn industry-relevant programming languages like Python, Java, JavaScript, and more from first year onwards.",
       duration: "4 Years",
-      color: "from-blue-500 to-blue-600"
+      color: "from-primary to-primary"
     },
     {
       icon: MessageSquare,
       title: "Soft Skills Development",
       description: "Build communication, leadership, and teamwork skills essential for corporate success.",
       duration: "Continuous",
-      color: "from-blue-500 to-blue-600"
+      color: "from-primary to-primary"
     },
     {
       icon: Brain,
       title: "Aptitude & Logical Reasoning",
       description: "Strengthen analytical thinking and problem-solving abilities for competitive exams and interviews.",
       duration: "Ongoing",
-      color: "from-blue-500 to-blue-600"
+      color: "from-primary to-primary"
     }
   ];
 
@@ -42,7 +42,7 @@ const TrainlanceSection = () => {
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-primary mb-4 flex items-center justify-center gap-2">
             CCC
-            <img src="/tieup.jpg" alt="Partnership" className="inline-block w-10 h-10 mx-2" />
+            <img src="/tieup.jpg" alt="Campus Career Connect and Trainlance partnership for guaranteed placement training" className="inline-block w-10 h-10 mx-2" loading="lazy" />
             Trainlance Partnership
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
@@ -92,7 +92,7 @@ const TrainlanceSection = () => {
                 <div className="w-20 h-20 bg-gradient-primary rounded-full flex items-center justify-center mx-auto mb-4">
                   <Users className="w-10 h-10 text-white" />
                 </div>
-                <h4 className="text-xl font-bold text-primary">10,000+ Students</h4>
+                <h4 className="text-xl font-bold text-primary">5,000+ Students</h4>
                 <p className="text-muted-foreground">Successfully trained and placed</p>
               </div>
               

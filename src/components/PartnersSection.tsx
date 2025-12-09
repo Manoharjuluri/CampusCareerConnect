@@ -1,13 +1,17 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { useState } from "react";
+import CollegeDetailsModal from "./CollegeDetailsModal";
+import { collegeDetailsData, getDefaultCollegeDetails, CollegeDetails } from "@/data/collegeDetails";
 
 const PartnersSection = () => {
   const [showAllColleges, setShowAllColleges] = useState(false);
+  const [selectedCollege, setSelectedCollege] = useState<CollegeDetails | null>(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
   
   const partners = [
     { name: "SRM Institute", logo: "/srm-logo.png", category: "Engineering", location: "Chennai", ranking: "#5 Private Engineering" },
     { name: "VIT University", logo: "/vit-logo.png", category: "Engineering", location: "Vellore", ranking: "#8 Private Engineering" },
-    { name: "Manipal Institute", logo: "/manipal-logo.jpg", category: "Technology", location: "Karnataka", ranking: "#12 Engineering" },
+    { name: "Sandip University", logo: "/sandip university.png", category: "Engineering", location: "Nasik", ranking: "#89 Private Engineering" },
     { name: "GITAM University", logo: "/gitam.jpg", category: "Engineering", location: "Hyderabad,Vishakapatnam,Banglore", ranking: "#15 Private Engineering" },
     { name: "VR Siddhartha Engineering College", logo: "/vrsiddardha.png", category: "Engineering", location: "Vijayawada", ranking: "#20 Private Engineering" },
     { name: "LPU", logo: "/lpu-logo.png", category: "Engineering", location: "Punjab", ranking: "#25 Private Engineering" },
@@ -23,7 +27,7 @@ const PartnersSection = () => {
     { name: "Bennett University", logo: "/bennet-university.png", category: "Engineering", location: "Greater Noida", ranking: "#50 Private Engineering" },
     { name: "Guru Nanak College", logo: "/gurunanak.png", category: "Engineering", location: "Hyderabad", ranking: "#55 Private Engineering" },
     { name: "Chandigarh University", logo: "/chandigarh university.jpg", category: "Engineering", location: "Chandigarh", ranking: "#60 Private Engineering" },
-    { name: "Sandip University", logo: "/sandip university.png", category: "Engineering", location: "Nasik", ranking: "#89 Private Engineering" },
+    { name: "Manipal Institute", logo: "/manipal-logo.jpg", category: "Technology", location: "Karnataka", ranking: "#12 Engineering" },
     { name: "Vignan's Foundation for Science, Technology & Research", logo: "/vignan-logo.jpg", category: "Engineering", location: "Guntur", ranking: "#65 Private Engineering" },
     { name: "R.V.R. & J.C.College of Engineering", logo: "/rvrjc.jpg", category: "Engineering", location: "Guntur", ranking: "#70 Private Engineering" },
     { name: "Presidency University", logo: "/presidency.jpg", category: "Engineering", location: "Bangalore", ranking: "#75 Private Engineering" },
@@ -52,6 +56,12 @@ const PartnersSection = () => {
 
   const allColleges = [...partners, ...moreColleges];
   const displayedColleges = showAllColleges ? allColleges : partners;
+
+  const handleCollegeClick = (college: typeof partners[0]) => {
+    const details = collegeDetailsData[college.name] || getDefaultCollegeDetails(college);
+    setSelectedCollege(details);
+    setIsModalOpen(true);
+  };
 
   const categories = [];
 
@@ -89,10 +99,14 @@ const PartnersSection = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-4 sm:gap-x-6 gap-y-4 sm:gap-y-5 lg:gap-y-6 max-w-full overflow-x-hidden">
             {displayedColleges.map((college, index) => (
-              <Card key={index} className="bg-white border-0 shadow-card hover:shadow-elegant transition-all duration-300 hover:-translate-y-2 group">
-                <CardContent className="p-6 text-center">
+              <Card 
+                key={index} 
+                className="bg-white border-0 shadow-card hover:shadow-[0_8px_30px_rgba(0,0,0,0.25)] transition-all duration-300 hover:-translate-y-2 group cursor-pointer relative"
+                onClick={() => handleCollegeClick(college)}
+              >
+                <CardContent className="p-6 text-center pb-8">
                   <div className="w-28 h-28 rounded-full flex items-center justify-center mx-auto mb-1 group-hover:scale-110 transition-transform duration-300 overflow-hidden">
-                    <img src={college.logo} alt={college.name + ' logo'} className="w-24 h-24 object-contain rounded-full" />
+                    <img src={college.logo} alt={college.name + ' - Top B.Tech Engineering College Partner'} className="w-24 h-24 object-contain rounded-full" loading="lazy" />
                   </div>
                   <h4 className="font-semibold text-primary text-lg mb-2">{college.name}</h4>
                   <p className="text-muted-foreground text-sm mb-1">{college.location}</p>
@@ -104,18 +118,21 @@ const PartnersSection = () => {
                       {college.category}
                     </span>
                   </div>
+                  <p className="text-xs text-primary mt-4 font-medium absolute bottom-3 right-4">
+                    Read More...
+                  </p>
                 </CardContent>
               </Card>
             ))}
+          </div>
 
           {showAllColleges && (
-            <div className="flex justify-center mt-6">
-              <span className="text-lg font-semibold text-primary whitespace-nowrap text-center">
+            <div className="flex justify-end mt-6 pr-4">
+              <span className="text-lg font-semibold text-primary whitespace-nowrap">
                 ...and many more universities and colleges
               </span>
             </div>
           )}
-          </div>
 
           {/* View More/Less Button */}
           <div className="flex justify-center mt-8">
@@ -174,6 +191,13 @@ const PartnersSection = () => {
           </div>
         </div>
       </div>
+
+      {/* College Details Modal */}
+      <CollegeDetailsModal
+        college={selectedCollege}
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+      />
     </section>
   );
 };
