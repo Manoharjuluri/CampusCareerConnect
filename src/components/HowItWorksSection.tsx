@@ -32,8 +32,8 @@ const HowItWorksSection = () => {
 
   return (
   <section id="how-it-works" className="pt-8 pb-0 md:pb-0 bg-background">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-  <div className="text-center mb-0">
+    <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+  <div className="text-center mb-8">
           <h2 className="text-3xl md:text-4xl font-bold text-primary mb-4">
             How Campus Career Connect Works
           </h2>
@@ -43,7 +43,7 @@ const HowItWorksSection = () => {
           </p>
         </div>
 
-        <div className="relative">
+  <div className="relative pt-4">
           {/* Connection Line */}
           <div className="hidden lg:block absolute top-1/2 left-0 right-0 h-0.5 bg-gradient-to-r from-blue-500 via-purple-500 via-green-500 to-orange-500 transform -translate-y-1/2 z-0" />
           

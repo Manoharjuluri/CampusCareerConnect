@@ -116,7 +116,8 @@ export default function TestimonialsSection({ autoplayDelay = 5000 }: { autoplay
       },
 
       // ----- Data / Design / Law / Health / Other Domains -----
-         ],
+     
+    ],
     []
   );
 
