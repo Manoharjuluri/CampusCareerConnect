@@ -12,6 +12,7 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "
 import { useToast } from "@/hooks/use-toast";
 import { Link, useNavigate } from "react-router-dom";
 import { ArrowLeft, Phone } from "lucide-react";
+import { env } from "@/config/env";
 
 const formSchema = z.object({
   name: z.string().min(2, "Name must be at least 2 characters"),
@@ -68,7 +69,7 @@ const ScheduleCall = () => {
         nativeVillage: data.state,
         receiveUpdates: data.receiveUpdates,
       };
-      const res = await fetch("https://f04or36zm8.execute-api.ca-central-1.amazonaws.com/career/careerContacts", {
+      const res = await fetch(`${env.API_BASE_URL}/careerContacts`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload)

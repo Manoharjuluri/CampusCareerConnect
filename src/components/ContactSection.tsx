@@ -7,6 +7,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { MapPin, Phone, Mail, Clock } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
+import { env } from "@/config/env";
 
 const ContactSection = () => {
 
@@ -57,7 +58,7 @@ const ContactSection = () => {
         areaOfInterest: form.areaOfInterest,
         message: form.message
       };
-      const res = await fetch("https://f04or36zm8.execute-api.ca-central-1.amazonaws.com/career/careerContacts", {
+      const res = await fetch(`${env.API_BASE_URL}/careerContacts`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload)
@@ -88,64 +89,54 @@ const ContactSection = () => {
           Get in Touch with Us
         </h2>
         <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-          Ready to start your journey? Contact our expert counselors for personalized guidance 
-          and support in choosing the right college and career path.
+          Ready to start your journey? Get expert career guidance, personalized counselling, and scientific assessments to discover your perfect career path.
         </p>
       </div>
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid lg:grid-cols-3 gap-8">
+        <div className="grid lg:grid-cols-3 gap-6 lg:gap-8">
           {/* Contact Information */}
           <div className="lg:col-span-1">
             <Card className="border-0 shadow-card h-full">
-              <CardHeader>
-                <CardTitle className="text-darkgrey">Contact Information</CardTitle>
+              <CardHeader className="pb-4">
+                <CardTitle className="text-darkgrey text-lg sm:text-xl">Contact Information</CardTitle>
               </CardHeader>
-              <CardContent className="space-y-6">
+              <CardContent className="space-y-4 sm:space-y-6">
                 <div className="flex items-start space-x-3">
-                  <MapPin className="w-5 h-5 text-blue mt-1 flex-shrink-0" />
+                  <MapPin className="w-4 h-4 sm:w-5 sm:h-5 text-blue mt-1 flex-shrink-0" />
                   <div>
-                    <h4 className="font-semibold text-primary mb-1">Address</h4>
-                    <p className="text-muted-foreground text-sm">
+                    <h4 className="font-semibold text-primary mb-1 text-sm sm:text-base">Address</h4>
+                    <p className="text-muted-foreground text-xs sm:text-sm leading-relaxed">
                       CCC Campus, Malakpet, Hyderabad<br />
-                 </p>
+                    </p>
                   </div>
                 </div>
                 
                 <div className="flex items-start space-x-3">
-                  <Phone className="w-5 h-5 text-blue mt-1 flex-shrink-0" />
+                  <Phone className="w-4 h-4 sm:w-5 sm:h-5 text-blue mt-1 flex-shrink-0" />
                   <div>
-                    <h4 className="font-semibold text-primary mb-1">Phone</h4>
-                    <p className="text-muted-foreground text-sm">+91 8074313417</p>
-                    <p className="text-muted-foreground text-sm">+91 9390163762</p>
+                    <h4 className="font-semibold text-primary mb-1 text-sm sm:text-base">Phone</h4>
+                    <p className="text-muted-foreground text-xs sm:text-sm">+91 8074313417</p>
+                    <p className="text-muted-foreground text-xs sm:text-sm">+91 9390163762</p>
                   </div>
                 </div>
                 
                 <div className="flex items-start space-x-3">
-                  <Mail className="w-5 h-5 text-blue mt-1 flex-shrink-0" />
+                  <Mail className="w-4 h-4 sm:w-5 sm:h-5 text-blue mt-1 flex-shrink-0" />
                   <div>
-                    <h4 className="font-semibold text-primary mb-1">Email</h4>
-                    <p className="text-muted-foreground text-sm">info@campuscareerconnect.com</p>
-                    <p className="text-muted-foreground text-sm">support@campuscareerconnect.com</p>
+                    <h4 className="font-semibold text-primary mb-1 text-sm sm:text-base">Email</h4>
+                    <p className="text-muted-foreground text-xs sm:text-sm break-all">info@campuscareerconnect.com</p>
+                    <p className="text-muted-foreground text-xs sm:text-sm break-all">support@campuscareerconnect.com</p>
                   </div>
                 </div>
                 
                 <div className="flex items-start space-x-3">
-                  <Clock className="w-5 h-5 text-blue mt-1 flex-shrink-0" />
+                  <Clock className="w-4 h-4 sm:w-5 sm:h-5 text-blue mt-1 flex-shrink-0" />
                   <div>
-                    <h4 className="font-semibold text-primary mb-1">Office Hours</h4>
-                    <p className="text-muted-foreground text-sm">Monday - Friday: 9:00 AM - 7:00 PM</p>
-                    <p className="text-muted-foreground text-sm">Saturday: 10:00 AM - 5:00 PM</p>
-                    <p className="text-muted-foreground text-sm">Sunday: Closed</p>
+                    <h4 className="font-semibold text-primary mb-1 text-sm sm:text-base">Office Hours</h4>
+                    <p className="text-muted-foreground text-xs sm:text-sm">Monday - Friday: 9:00 AM - 7:00 PM</p>
+                    <p className="text-muted-foreground text-xs sm:text-sm">Saturday: 10:00 AM - 5:00 PM</p>
+                    <p className="text-muted-foreground text-xs sm:text-sm">Sunday: Closed</p>
                   </div>
-                </div>
-
-                <div className="pt-4">
-                  {/* <h4 className="font-semibold text-primary mb-3">Follow Us</h4> */}
-                  {/* <div className="flex space-x-4">
-                    <Button variant="outline" size="sm">Facebook</Button>
-                    <Button variant="outline" size="sm">Instagram</Button>
-                    <Button variant="outline" size="sm">LinkedIn</Button>
-                  </div> */}
                 </div>
               </CardContent>
             </Card>
@@ -154,38 +145,71 @@ const ContactSection = () => {
           {/* Contact Form */}
           <div className="lg:col-span-2">
             <Card className="border-0 shadow-card">
-              <CardHeader>
-                <CardTitle className="text-secondary">Send us a Message</CardTitle>
+              <CardHeader className="pb-4">
+                <CardTitle className="text-secondary text-lg sm:text-xl">Send us a Message</CardTitle>
               </CardHeader>
               <CardContent>
-                <form className="space-y-6" onSubmit={handleSubmit}>
-                  <div className="grid md:grid-cols-2 gap-4">
+                <form className="space-y-4 sm:space-y-6" onSubmit={handleSubmit}>
+                  {/* Name Fields */}
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                     <div>
-                      <Label htmlFor="firstName">First Name *</Label>
-                      <Input id="firstName" placeholder="Enter your first name" className="mt-1" value={form.firstName} onChange={handleChange} required />
+                      <Label htmlFor="firstName" className="text-sm font-medium">First Name *</Label>
+                      <Input 
+                        id="firstName" 
+                        placeholder="Enter your first name" 
+                        className="mt-1 text-sm" 
+                        value={form.firstName} 
+                        onChange={handleChange} 
+                        required 
+                      />
                     </div>
                     <div>
-                      <Label htmlFor="lastName">Last Name *</Label>
-                      <Input id="lastName" placeholder="Enter your last name" className="mt-1" value={form.lastName} onChange={handleChange} required />
+                      <Label htmlFor="lastName" className="text-sm font-medium">Last Name *</Label>
+                      <Input 
+                        id="lastName" 
+                        placeholder="Enter your last name" 
+                        className="mt-1 text-sm" 
+                        value={form.lastName} 
+                        onChange={handleChange} 
+                        required 
+                      />
                     </div>
                   </div>
                   
-                  <div className="grid md:grid-cols-2 gap-4">
+                  {/* Contact Fields */}
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                     <div>
-                      <Label htmlFor="email">Email *</Label>
-                      <Input id="email" type="email" placeholder="Enter your email" className="mt-1" value={form.email} onChange={handleChange} required />
+                      <Label htmlFor="email" className="text-sm font-medium">Email *</Label>
+                      <Input 
+                        id="email" 
+                        type="email" 
+                        placeholder="Enter your email" 
+                        className="mt-1 text-sm" 
+                        value={form.email} 
+                        onChange={handleChange} 
+                        required 
+                      />
                     </div>
                     <div>
-                      <Label htmlFor="phone">Phone Number *</Label>
-                      <Input id="phoneNumber" type="tel" placeholder="Enter your phone number" className="mt-1" value={form.phoneNumber} onChange={handleChange} required />
+                      <Label htmlFor="phone" className="text-sm font-medium">Phone Number *</Label>
+                      <Input 
+                        id="phoneNumber" 
+                        type="tel" 
+                        placeholder="Enter your phone number" 
+                        className="mt-1 text-sm" 
+                        value={form.phoneNumber} 
+                        onChange={handleChange} 
+                        required 
+                      />
                     </div>
                   </div>
 
-                  <div className="grid md:grid-cols-2 gap-4">
+                  {/* Status and Interest Fields */}
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                     <div>
-                      <Label htmlFor="grade">Current Status *</Label>
+                      <Label htmlFor="grade" className="text-sm font-medium">Current Status *</Label>
                       <Select value={form.currentStatus} onValueChange={(val) => handleSelect("currentStatus", val)}>
-                        <SelectTrigger className="mt-1">
+                        <SelectTrigger className="mt-1 text-sm">
                           <SelectValue placeholder="Select your current status" />
                         </SelectTrigger>
                         <SelectContent>
@@ -197,9 +221,9 @@ const ContactSection = () => {
                       </Select>
                     </div>
                     <div>
-                      <Label htmlFor="interest">Area of Interest *</Label>
+                      <Label htmlFor="interest" className="text-sm font-medium">Area of Interest *</Label>
                       <Select value={form.areaOfInterest} onValueChange={(val) => handleSelect("areaOfInterest", val)}>
-                        <SelectTrigger className="mt-1">
+                        <SelectTrigger className="mt-1 text-sm">
                           <SelectValue placeholder="Select your interest" />
                         </SelectTrigger>
                         <SelectContent>
@@ -215,36 +239,62 @@ const ContactSection = () => {
                     </div>
                   </div>
 
+                  {/* Message Field */}
                   <div>
-                    <Label htmlFor="message">Message *</Label>
+                    <Label htmlFor="message" className="text-sm font-medium">Message *</Label>
                     <Textarea 
                       id="message" 
                       placeholder="Tell us about your career goals, questions, or how we can help you..."
-                      className="mt-1"
-                      rows={5}
+                      className="mt-1 text-sm resize-none"
+                      rows={4}
                       value={form.message}
                       onChange={handleChange}
                       required
                     />
                   </div>
 
-                  <div className="flex items-center space-x-2">
-                    <input type="checkbox" id="consent" className="rounded" checked={form.consent} onChange={handleChange} />
-                    <Label htmlFor="consent" className="text-sm text-muted-foreground">
+                  {/* Consent Checkbox */}
+                  <div className="flex items-start space-x-2">
+                    <input 
+                      type="checkbox" 
+                      id="consent" 
+                      className="rounded mt-1 flex-shrink-0" 
+                      checked={form.consent} 
+                      onChange={handleChange} 
+                    />
+                    <Label htmlFor="consent" className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
                       I agree to receive communications from Campus Career Connect and understand that I can unsubscribe at any time.
                     </Label>
                   </div>
 
-                  <div className="flex gap-4">
-                    <Button type="submit" variant="cta" size="lg" className="flex-1" disabled={loading}>
+                  {/* Success/Error Messages */}
+                  {success && (
+                    <div className="text-green-600 text-center font-medium text-sm sm:text-base p-3 bg-green-50 rounded-lg">
+                      {success}
+                    </div>
+                  )}
+                  {error && (
+                    <div className="text-red-600 text-center font-medium text-sm sm:text-base p-3 bg-red-50 rounded-lg">
+                      {error}
+                    </div>
+                  )}
+
+                  {/* Action Buttons */}
+                  <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
+                    <Button 
+                      type="submit" 
+                      variant="cta" 
+                      size="lg" 
+                      className="flex-1 order-1 sm:order-1" 
+                      disabled={loading}
+                    >
                       {loading ? "Sending..." : "Send Message"}
                     </Button>
-                  {success && <div className="text-green-600 text-center font-medium">{success}</div>}
-                  {error && <div className="text-red-600 text-center font-medium">{error}</div>}
                     <Button 
                       type="button" 
                       variant="outline" 
                       size="lg"
+                      className="flex-1 sm:flex-none order-2 sm:order-2"
                       onClick={() => navigate("/schedule-call")}
                     >
                       Schedule Call
@@ -257,17 +307,26 @@ const ContactSection = () => {
         </div>
 
         {/* CTA Section */}
-        <div className="mt-16 text-center bg-gradient-secondary rounded-2xl p-8 text-white">
-          <h3 className="text-2xl font-bold mb-4">Ready to Transform Your Future?</h3>
-          <p className="text-white/90 mb-6 max-w-2xl mx-auto">
+        <div className="mt-12 sm:mt-16 text-center bg-gradient-secondary rounded-2xl p-6 sm:p-8 text-white">
+          <h3 className="text-xl sm:text-2xl font-bold mb-3 sm:mb-4">Ready to Transform Your Future?</h3>
+          <p className="text-white/90 mb-4 sm:mb-6 max-w-2xl mx-auto text-sm sm:text-base leading-relaxed">
             Join thousands of successful students who found their perfect college and career path with Campus Career Connect. 
             Your journey to success starts with a single step.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button variant="hero" size="lg" className="bg-white/10 border-grey/30 text-white hover:bg-white/20" onClick={() => navigate("/schedule-call")}>
+          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center max-w-md sm:max-w-none mx-auto">
+            <Button 
+              variant="hero" 
+              size="lg" 
+              className="bg-white/10 border-grey/30 text-white hover:bg-white/20 flex-1 sm:flex-none" 
+              onClick={() => navigate("/schedule-call")}
+            >
               Start Free Consultation
             </Button>
-            <Button variant="hero" size="lg" className="bg-white/10 border-grey/30 text-white hover:bg-white/20">
+            <Button 
+              variant="hero" 
+              size="lg" 
+              className="bg-white/10 border-grey/30 text-white hover:bg-white/20 flex-1 sm:flex-none"
+            >
               Download Brochure
             </Button>
           </div>

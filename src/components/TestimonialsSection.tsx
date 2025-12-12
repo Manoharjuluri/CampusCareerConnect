@@ -116,60 +116,7 @@ export default function TestimonialsSection({ autoplayDelay = 5000 }: { autoplay
       },
 
       // ----- Data / Design / Law / Health / Other Domains -----
-      {
-        name: "Harini Iyer",
-        college: "Christ (Deemed to be University), Bengaluru",
-        course: "B.Sc (Hons) Data Science",
-        image: testimonial10,
-        rating: 5,
-        testimonial:
-          "The capstone mentoring from Trainlance helped me build an NLP project portfolio. CCC guided my switch from ECE to Data Science with clarity and confidence.",
-      },
-      {
-        name: "Yashwant Kulkarni",
-        college: "NALSAR University of Law, Hyderabad",
-        course: "BA LL.B (Hons)",
-        image: testimonial11,
-        rating: 5,
-        testimonial:
-          "Moot prep + legal writing workshops via Trainlance improved my research precision. CCC mapped colleges aligned to my interest in tech policy.",
-      },
-      {
-        name: "Meera Joseph",
-        college: "Malla Reddy Engineering College",
-        course: "B.Des – Fashion Communication",
-        image: testimonial12,
-        rating: 5,
-        testimonial:
-          "Portfolio reviews and storytelling practice turned my application around. Landed a brand comms internship with a top retail label.",
-      },
-      {
-        name: "Sachin Rao",
-        college: "Sathyabama Institute of Science and Technology",
-        course: "B.Tech Civil Engineering",
-        image: testimonial13,
-        rating: 5,
-        testimonial:
-          "CCC suggested colleges with strong infra tie-ups. Trainlance's technical presentation + AutoCAD portfolio clinic helped me bag a site engineering role.",
-      },
-      {
-        name: "Aditi Gupta",
-        college: "KL University",
-        course: "B.Pharm",
-        image: testimonial14,
-        rating: 5,
-        testimonial:
-          "Mock interviews, research poster coaching, and LinkedIn grooming from Trainlance helped me secure a clinical research internship.",
-      },
-      {
-        name: "Naveen Choudhary",
-        college: "VIT Bhopal",
-        course: "B.Tech AI & ML",
-        image: testimonial15,
-        rating: 5,
-        testimonial:
-          "With CCC's guidance I shortlisted AI-focused campuses. Trainlance's coding sprints and peer reviews took my GitHub from empty to employer-ready in 3 months.",
-      },
+     
     ],
     []
   );
