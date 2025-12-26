@@ -11,6 +11,8 @@ import PrivacyPolicy from "./pages/PrivacyPolicy";
 import TermsConditions from "./pages/TermsConditions";
 import ScheduleCall from "./pages/ScheduleCall";
 import MoreColleges from "./pages/Morecolleges";
+import Blog from "./pages/Blog";
+import BlogPost from "./pages/BlogPost";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -35,6 +37,8 @@ const App = () => (
             <Route path="/terms" element={<TermsConditions />} />
             <Route path="/schedule-call" element={<ScheduleCall />} />
             <Route path="/morecolleges" element={<MoreColleges />} />
+            <Route path="/blog" element={<Blog />} />
+            <Route path="/blog/:slug" element={<BlogPost />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>

@@ -1,0 +1,127 @@
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
+import { Card, CardContent } from "@/components/ui/card";
+import { Link } from "react-router-dom";
+import { Calendar, Clock, ArrowRight, ArrowLeft } from "lucide-react";
+import { Button } from "@/components/ui/button";
+
+interface BlogPost {
+  id: string;
+  title: string;
+  description: string;
+  date: string;
+  readTime: string;
+  category: string;
+  image?: string;
+}
+
+const blogPosts: BlogPost[] = [
+  {
+    id: "best-career-counselling-platform-2025",
+    title: "How to Choose the Best Career Counselling Platform in 2025",
+    description: "Learn how to choose the Best Career Counselling Platform in 2025 with clear criteria, real reviews, and step-by-step checks for students and parents. Discover essential factors like counselor qualifications, platform credibility, success rates, personalized guidance, and cost-effectiveness. Get expert tips on evaluating online vs offline counseling, understanding different assessment tools, and making informed decisions that align with your career goals and aspirations.\nWhat are you waiting for?\n go read full blog now.....",
+    date: "2025-01-15",
+    readTime: "8 min read",
+    category: "Career Guidance",
+    image: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800&h=600&fit=crop",
+  },
+  {
+    id: "career-guidance-right-college-decision",
+    title: "Career Guidance for Students: Are We Making the Right College Decision?",
+    description: "Are we Making the Right College Choice? Career Guidance to Students. Do you read college brochures, course lists and tuition figures and wonder, what about making a wrong decision? You are not alone. The same knot in the stomach is experienced by the students and parents all around the world. Having numerous options, shifting careers, and friends, relatives, and social media shouting their opinions at you, one may even be nearly certain that the career and college choice they have made is not right. There is a fear of not spending time and money wisely.\n\nDiscover 7 compelling reasons why career guidance matters more than ever, from avoiding costly mistakes to building confidence in making informed decisions.",
+    date: "2025-01-20",
+    readTime: "10 min read",
+    category: "Right College?",
+    image: "https://images.unsplash.com/photo-1509062522246-3755977927d7?w=800&h=600&fit=crop",
+  },
+];
+
+const Blog = () => {
+  return (
+    <div className="min-h-screen flex flex-col">
+      <Header />
+      <main className="flex-1 pt-2 pb-6">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
+          {/* Back Button */}
+          <div className="mb-4">
+            <Link to="/">
+              <Button variant="ghost" className="text-primary hover:text-primary/80 hover:bg-primary/10 gap-2">
+                <ArrowLeft className="w-4 h-4" />
+                Back to Home
+              </Button>
+            </Link>
+          </div>
+
+          {/* Hero Section */}
+          <div className="text-center mb-6">
+            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-primary mb-3">
+              Career Guidance Blog
+            </h1>
+            <p className="text-base md:text-lg text-muted-foreground max-w-2xl mx-auto">
+              Expert insights, tips, and guides to help you make informed career decisions
+            </p>
+          </div>
+
+          {/* Blog Posts */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+            {blogPosts.map((post) => (
+              <Card
+                key={post.id}
+                className="border border-border/50 shadow-sm hover:shadow-[0_8px_30px_rgba(0,0,0,0.15)] transition-all duration-300 hover:-translate-y-1 group cursor-pointer h-full flex flex-col bg-white min-h-[500px]"
+              >
+                <Link to={`/blog/${post.id}`} className="h-full flex flex-col">
+                  {post.image && (
+                    <div className="w-full h-56 bg-gradient-subtle overflow-hidden rounded-t-lg">
+                      <img
+                        src={post.image}
+                        alt={post.title}
+                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                        loading="lazy"
+                      />
+                    </div>
+                  )}
+                  <CardContent className="p-7 flex flex-col flex-1">
+                    <div className="flex items-center gap-2.5 mb-3 flex-wrap">
+                      <span className="px-3 py-1 bg-primary/10 text-primary rounded-full text-xs font-semibold">
+                        {post.category}
+                      </span>
+                      <div className="flex items-center gap-1.5 text-xs text-muted-foreground">
+                        <Calendar className="w-3.5 h-3.5" />
+                        <span>{new Date(post.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
+                      </div>
+                    </div>
+                    <h2 className="text-lg md:text-xl font-bold text-primary mb-3 group-hover:text-primary/80 transition-colors line-clamp-2 leading-tight">
+                      {post.title}
+                    </h2>
+                    <p className="text-muted-foreground mb-6 line-clamp-4 text-sm leading-relaxed flex-1 whitespace-pre-line">
+                      {post.description}
+                    </p>
+                    <div className="flex items-center justify-between mt-auto pt-4 border-t border-border/40">
+                      <div className="flex items-center gap-1.5 text-xs text-muted-foreground">
+                        <Clock className="w-3.5 h-3.5" />
+                        <span>{post.readTime}</span>
+                      </div>
+                      <div className="flex items-center gap-2 text-primary font-semibold text-sm group-hover:gap-3 transition-all">
+                        <span>Read More</span>
+                        <ArrowRight className="w-4 h-4" />
+                      </div>
+                    </div>
+                  </CardContent>
+                </Link>
+              </Card>
+            ))}
+          </div>
+
+          {blogPosts.length === 0 && (
+            <div className="text-center py-8 col-span-full">
+              <p className="text-muted-foreground">More blog posts coming soon!</p>
+            </div>
+          )}
+        </div>
+      </main>
+      <Footer />
+    </div>
+  );
+};
+
+export default Blog;

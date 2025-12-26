@@ -1,7 +1,7 @@
 import { useState, useEffect, useCallback, useRef } from "react";
 import { Menu, X, Phone, MessageCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { useLocation } from "react-router-dom";
+import { useLocation, Link } from "react-router-dom";
 import { env } from "@/config/env";
 
 declare global {
@@ -106,6 +106,7 @@ const Header = () => {
     { name: "About Us", href: "#about" },
     { name: "Top Colleges", href: "#partners" },
     { name: "Skill Training", href: "#trainlance" },
+    { name: "Blog", href: "/blog" },
     { name: "Get Support", href: "#contact" },
   ];
 
@@ -201,49 +202,69 @@ const Header = () => {
         </div>
       </div>
 
-      <div className="w-full px-4 relative">
-        <div className="flex items-center h-20 w-full">
+      <div className="w-full px-2 xl:px-4 relative">
+        <div className="flex items-center h-16 xl:h-20 w-full">
           {/* Logo & Title */}
-          <div className="flex items-center space-x-4 group">
+          <div className="flex items-center space-x-2 xl:space-x-4 group flex-shrink-0">
             <div className="p-1 bg-white/90 border-2 border-primary rounded-2xl shadow-card group-hover:shadow-elegant transition-all duration-300 group-hover:scale-105">
               <img
                 src="/ccc-logo.jpeg"
                 alt="Campus Career Connect - Best B.Tech College Admission and Career Guidance Platform Logo"
-                className="w-16 h-16 object-contain"
+                className="w-12 h-12 xl:w-16 xl:h-16 object-contain"
                 loading="eager"
               />
             </div>
             <div className="flex flex-col justify-center">
-              <h1 className="text-2xl font-black font-poppins gradient-text tracking-tight leading-tight">
+              <h1 className="text-lg xl:text-2xl font-black font-poppins gradient-text tracking-tight leading-tight">
                 Campus Career Connect
               </h1>
-              <p className="text-sm text-muted-foreground font-semibold leading-tight">
+              <p className="text-xs xl:text-sm text-muted-foreground font-semibold leading-tight hidden xl:block">
                 Your Journey from College Dreams to Career Goals
               </p>
             </div>
           </div>
 
           {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center gap-10 ml-8 flex-1">
-            {navLinks.map((link) => (
-              <a
-                key={link.name}
-                href={link.href}
-                className="relative text-foreground hover:text-primary font-medium transition-colors duration-200 group px-2 py-2 flex items-center justify-center"
-                style={{ minWidth: "110px", textAlign: "center" }}
-              >
-                {link.name}
-                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-primary transition-all duration-300 group-hover:w-full rounded-full" />
-              </a>
-            ))}
+          <nav className="hidden lg:flex items-center gap-4 xl:gap-6 2xl:gap-10 ml-4 xl:ml-8 flex-1 justify-center xl:justify-start">
+            {navLinks.map((link) => {
+              const isHashLink = link.href.startsWith('#');
+              const className = "relative text-foreground hover:text-primary font-medium transition-colors duration-200 group px-1.5 xl:px-2 py-2 flex items-center justify-center text-sm xl:text-base whitespace-nowrap";
+              const style = { minWidth: "auto", textAlign: "center" as const };
+              
+              if (isHashLink) {
+                return (
+                  <a
+                    key={link.name}
+                    href={link.href}
+                    className={className}
+                    style={style}
+                  >
+                    {link.name}
+                    <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-primary transition-all duration-300 group-hover:w-full rounded-full" />
+                  </a>
+                );
+              }
+              
+              return (
+                <Link
+                  key={link.name}
+                  to={link.href}
+                  className={className}
+                  style={style}
+                >
+                  {link.name}
+                  <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-primary transition-all duration-300 group-hover:w-full rounded-full" />
+                </Link>
+              );
+            })}
           </nav>
 
           {/* Why Us? (Desktop) */}
-          <div className="hidden lg:block relative group">
+          <div className="hidden lg:block relative group ml-2 xl:ml-4">
             <button
               type="button"
-              className="relative bg-primary text-white font-bold transition-colors duration-200 px-4 py-2 flex items-center justify-center cursor-pointer rounded-lg shadow hover:bg-primary/90"
-              style={{ minWidth: "110px", textAlign: "center" }}
+              className="relative bg-primary text-white font-bold transition-colors duration-200 px-3 xl:px-4 py-2 flex items-center justify-center cursor-pointer rounded-lg shadow hover:bg-primary/90 text-sm xl:text-base whitespace-nowrap"
+              style={{ minWidth: "auto", textAlign: "center" }}
               onClick={() => track("Lead", { source: "Why Us Tab (Desktop)" })}
               aria-haspopup="true"
               aria-expanded="false"
@@ -291,17 +312,36 @@ const Header = () => {
           }}
         >
           <nav className="flex flex-col space-y-4 pt-4 px-4">
-            {navLinks.map((link) => (
-              <a
-                key={link.name}
-                href={link.href}
-                onClick={() => setIsMenuOpen(false)}
-                className="text-foreground hover:text-primary font-medium transition-colors duration-200 py-2 px-4 rounded-xl hover:bg-muted focus:outline-none focus:ring-2 focus:ring-primary"
-                tabIndex={isMenuOpen ? 0 : -1}
-              >
-                {link.name}
-              </a>
-            ))}
+            {navLinks.map((link) => {
+              const isHashLink = link.href.startsWith('#');
+              const className = "text-foreground hover:text-primary font-medium transition-colors duration-200 py-2 px-4 rounded-xl hover:bg-muted focus:outline-none focus:ring-2 focus:ring-primary";
+              
+              if (isHashLink) {
+                return (
+                  <a
+                    key={link.name}
+                    href={link.href}
+                    onClick={() => setIsMenuOpen(false)}
+                    className={className}
+                    tabIndex={isMenuOpen ? 0 : -1}
+                  >
+                    {link.name}
+                  </a>
+                );
+              }
+              
+              return (
+                <Link
+                  key={link.name}
+                  to={link.href}
+                  onClick={() => setIsMenuOpen(false)}
+                  className={className}
+                  tabIndex={isMenuOpen ? 0 : -1}
+                >
+                  {link.name}
+                </Link>
+              );
+            })}
 
             {/* Why Us (Mobile) */}
             <div className="relative">
