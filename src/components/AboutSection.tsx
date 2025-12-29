@@ -12,8 +12,8 @@ const AboutSection = () => {
   return (
     <section id="about" className="content-section">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-10 md:mb-12">
-          <h2 className="font-black mb-4 text-balance">
+        <div className="text-center mb-6 md:mb-8">
+          <h2 className="font-black mb-3 text-balance">
             <span className="text-blue-600">From Admission</span>{" "}
             <span className="text-blue-600">to Ambition</span>{" "}
             <span className="text-blue-600">we're with you</span>
@@ -28,7 +28,7 @@ const AboutSection = () => {
           </p>
         </div>
 
-        <div className="grid gap-8 md:gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:items-stretch mb-12 lg:mb-20">
+        <div className="grid gap-6 md:gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:items-stretch mb-8 lg:mb-12">
           <div className="flex flex-col gap-6 md:gap-8 lg:h-full">
             <div className="space-y-3">
               <h3 className="text-2xl md:text-3xl font-black text-blue-600 text-balance">Why CCC is Different</h3>

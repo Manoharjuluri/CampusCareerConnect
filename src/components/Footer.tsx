@@ -1,9 +1,27 @@
 import { GraduationCap, Mail, Phone, MapPin } from "lucide-react";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 
 const Footer = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const handleHashClick = (e: React.MouseEvent<HTMLAnchorElement>, hash: string) => {
+    e.preventDefault();
+    // If not on home page, navigate to home first, then scroll
+    if (location.pathname !== '/') {
+      navigate(`/${hash}`);
+    } else {
+      // Already on home page, just scroll
+      const element = document.querySelector(hash);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }
+  };
+
   return (
     <footer className="bg-[#232F3E] text-white overflow-x-hidden">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12 max-w-full overflow-x-hidden">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8 max-w-full overflow-x-hidden">
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-full overflow-x-hidden">
           {/* Brand Section */}
           <div>
@@ -30,14 +48,14 @@ const Footer = () => {
           <div>
             <h4 className="text-lg font-semibold mb-4">Quick Links</h4>
             <ul className="space-y-2">
-              <li><a href="#home" className="text-primary-foreground/80 hover:text-white transition-colors">Home</a></li>
-              <li><a href="#about" className="text-primary-foreground/80 hover:text-white transition-colors">About Us</a></li>
-              <li><a href="#services" className="text-primary-foreground/80 hover:text-white transition-colors">Services</a></li>
-              <li><a href="#testimonials" className="text-primary-foreground/80 hover:text-white transition-colors">Success Stories</a></li>
-              <li><a href="#partners" className="text-primary-foreground/80 hover:text-white transition-colors">Partner Colleges</a></li>
-              <li><a href="#trainlance" className="text-primary-foreground/80 hover:text-white transition-colors">Training (Trainlance)</a></li>
-              <li><a href="/blog" className="text-primary-foreground/80 hover:text-white transition-colors">Blog</a></li>
-              <li><a href="#contact" className="text-primary-foreground/80 hover:text-white transition-colors">Contact Us</a></li>
+              <li><a href="#home" onClick={(e) => handleHashClick(e, '#home')} className="text-primary-foreground/80 hover:text-white transition-colors">Home</a></li>
+              <li><a href="#about" onClick={(e) => handleHashClick(e, '#about')} className="text-primary-foreground/80 hover:text-white transition-colors">About Us</a></li>
+              <li><a href="#services" onClick={(e) => handleHashClick(e, '#services')} className="text-primary-foreground/80 hover:text-white transition-colors">Services</a></li>
+              <li><a href="#testimonials" onClick={(e) => handleHashClick(e, '#testimonials')} className="text-primary-foreground/80 hover:text-white transition-colors">Success Stories</a></li>
+              <li><a href="#partners" onClick={(e) => handleHashClick(e, '#partners')} className="text-primary-foreground/80 hover:text-white transition-colors">Partner Colleges</a></li>
+              <li><a href="#trainlance" onClick={(e) => handleHashClick(e, '#trainlance')} className="text-primary-foreground/80 hover:text-white transition-colors">Training (Trainlance)</a></li>
+              <li><Link to="/blog" className="text-primary-foreground/80 hover:text-white transition-colors">Blog</Link></li>
+              <li><a href="#contact" onClick={(e) => handleHashClick(e, '#contact')} className="text-primary-foreground/80 hover:text-white transition-colors">Contact Us</a></li>
             </ul>
           </div>
 

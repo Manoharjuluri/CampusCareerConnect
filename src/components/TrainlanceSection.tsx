@@ -37,9 +37,9 @@ const TrainlanceSection = () => {
   ];
 
   return (
-    <section id="trainlance" className="py-20 bg-background">
+    <section id="trainlance" className="py-12 bg-background">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
+        <div className="text-center mb-8">
           <h2 className="text-3xl md:text-4xl font-bold text-primary mb-4 flex items-center justify-center gap-2">
             CCC
             <img src="/tieup.jpg" alt="Campus Career Connect and Trainlance partnership for guaranteed placement training" className="inline-block w-10 h-10 mx-2" loading="lazy" />

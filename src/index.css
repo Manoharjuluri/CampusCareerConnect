@@ -207,7 +207,7 @@
 
   /* Content Spacing */
   .content-section {
-    @apply pt-20 pb-12 px-4 sm:px-6 lg:px-8;
+    @apply pt-12 pb-8 px-4 sm:px-6 lg:px-8;
   }
   
   .text-balance {

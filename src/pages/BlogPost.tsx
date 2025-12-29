@@ -4,24 +4,10 @@ import { useParams, Link } from "react-router-dom";
 import { Calendar, Clock, ArrowLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { useEffect } from "react";
+import { Helmet } from "react-helmet-async";
 
 const BlogPost = () => {
   const { slug } = useParams<{ slug: string }>();
-  
-  // Update document title and meta tags for SEO
-  useEffect(() => {
-    if (slug && blogContent[slug]) {
-      const post = blogContent[slug];
-      document.title = `${post.title} | Campus Career Connect Blog`;
-      
-      // Update meta description
-      const metaDescription = document.querySelector('meta[name="description"]');
-      if (metaDescription) {
-        metaDescription.setAttribute('content', post.metaDescription);
-      }
-    }
-  }, [slug]);
 
   // Blog content based on slug
   const blogContent: Record<string, any> = {
@@ -593,6 +579,334 @@ const BlogPost = () => {
           text: "Take time to review options, ask sharp questions, and start with small steps. Treat counselling as a partnership, not a magic formula. When you combine self-awareness with expert guidance, you give yourself a strong base for studies, work, and long-term growth."
         }
       ]
+    },
+    "confused-what-to-do-after-12th": {
+      title: "Confused What to Do After 12th? An Easy Way of Selecting the Right Path",
+      metaDescription: "Feeling lost after 12th? Learn a realistic 4-step decision model (Interest, Strength, Opportunity, Reality Check) to choose the right path. Avoid common pitfalls and discover how to communicate with parents effectively about your career choices.",
+      date: "2025-01-25",
+      readTime: "12 min read",
+      category: "Career Guidance",
+      content: [
+        {
+          type: "intro",
+          text: "Your score was high, everybody told you congratulations, and you had a feeling that your brain is frozen. The following question comes quick: college, course, entrance exams and future. You feel lost because you do not know what to do with your life after 12th, but you are not lagging, you are at like a crossroad where you are not even given the map."
+        },
+        {
+          type: "paragraph",
+          text: "Many students are not too stupid; they just do not have a relaxed approach. This paper is not a course list. It is a realistic approach to making a decision that one can in reality stick to, and it is also a method of communicating with parents without making it a dispute."
+        },
+        {
+          type: "heading",
+          level: 2,
+          text: "Why so many students were lost (despite good marks)"
+        },
+        {
+          type: "paragraph",
+          text: "Marks are not a direction, but a score. They demonstrate that you can study, work to a pattern and work to a set system. They do not necessarily demonstrate what you will love to do throughout your years."
+        },
+        {
+          type: "paragraph",
+          text: "The following are some of the reasons why clarity seems lacking immediately after 12th:"
+        },
+        {
+          type: "paragraph",
+          text: "Too much options, too little actual exposure. Ninety percent of the students are aware of the exterior view of engineering, medicine, and commerce. They are not aware of how it is like the day-to-day work."
+        },
+        {
+          type: "paragraph",
+          text: "Decisions are pressure-induced panics. The brain is seeking a quick solution when time is of the essence. Snap judgments usually turn out to be inaccurate judgments."
+        },
+        {
+          type: "paragraph",
+          text: "Identity gets tied to marks. When you have been referred to as a topper you might be tempted to order a topper course, although that might not suit you."
+        },
+        {
+          type: "paragraph",
+          text: "All people talk, yet very few people ask good questions. \"What are you taking?\" is common. \"What work do you like doing hours?\" is not common."
+        },
+        {
+          type: "paragraph",
+          text: "Being lost does not imply that you are not a hard worker or ungrateful. It is typically an attempt at having big decision out of little, half-done inputs."
+        },
+        {
+          type: "heading",
+          level: 2,
+          text: "5 bad ways students tend to pick one course (and why they end up being counterproductive)"
+        },
+        {
+          type: "paragraph",
+          text: "Most of the course options are not options, they are defaults. These are the most widespread pitfalls."
+        },
+        {
+          type: "heading",
+          level: 3,
+          text: "1) Making the decision because the relatives recommended it"
+        },
+        {
+          type: "paragraph",
+          text: "Family members have only good intentions, and they are usually talking out of their time and their fears. A family group is not something you should do in the future."
+        },
+        {
+          type: "heading",
+          level: 3,
+          text: "2) Choosing what's \"trending\""
+        },
+        {
+          type: "paragraph",
+          text: "Trends are real but they may also be loud. When a trend is popularized, the simple possibilities might be overwhelmed by the time it becomes mainstream."
+        },
+        {
+          type: "heading",
+          level: 3,
+          text: "3) Choosing based on marks only"
+        },
+        {
+          type: "paragraph",
+          text: "Good performance in math does not necessarily imply that you will be an engineer. Marks demonstrate that you can but not that you ought."
+        },
+        {
+          type: "heading",
+          level: 3,
+          text: "4) Selecting due to its selection by friends"
+        },
+        {
+          type: "paragraph",
+          text: "A friend may be a great best friend yet a poor reflector. Individuals are fond of various routines, pressure, and work styles."
+        },
+        {
+          type: "heading",
+          level: 3,
+          text: "5) Selecting according to fees (exorbitant or cheap enough)"
+        },
+        {
+          type: "paragraph",
+          text: "Price is an issue, however cheapest may limit choice, and most expensive may put pressure to persevere when dissatisfied. The plan should include money, not consist of money."
+        },
+        {
+          type: "paragraph",
+          text: "In case your existing plan resembles one of the above, do not panic. It can be corrected with a better process."
+        },
+        {
+          type: "heading",
+          level: 2,
+          text: "The 4-step decision model in a nutshell: Interest → Strength → Opportunity → Reality check"
+        },
+        {
+          type: "paragraph",
+          text: "It does not come in a flash to clarity. It develops through trying things out in reality. This 4-step framework can be used as a filter."
+        },
+        {
+          type: "heading",
+          level: 3,
+          text: "Step 1: Interest (what draws you in even when you are tired)"
+        },
+        {
+          type: "paragraph",
+          text: "Interest isn't only \"passion.\" It is what you feel like knowing, and what you would still do even when nobody has an eye on you."
+        },
+        {
+          type: "paragraph",
+          text: "Try these prompts:"
+        },
+        {
+          type: "list",
+          items: [
+            "What do you search using yourself?",
+            "What is your favourite problem solving types?",
+            "Are you a people person, data person, designer, a machine person, word person, or a living systems person?"
+          ]
+        },
+        {
+          type: "paragraph",
+          text: "Keep it simple. Select 3 to 5 areas that are really interesting to you."
+        },
+        {
+          type: "heading",
+          level: 3,
+          text: "Step 2: Strength (what you can learn better, or above average)"
+        },
+        {
+          type: "paragraph",
+          text: "Strength is not talent alone but performance which can be repeated. Search within school, hobbies and everyday life."
+        },
+        {
+          type: "paragraph",
+          text: "Examples of strengths:"
+        },
+        {
+          type: "list",
+          items: [
+            "Explaining ideas clearly",
+            "Being patient to details and practice",
+            "Spotting mistakes quickly",
+            "Leading group work",
+            "Writing, sketching, constructing, arranging"
+          ]
+        },
+        {
+          type: "paragraph",
+          text: "Ask two teachers, and two friends: \"What do you think I am naturally good at?\" — if you are in doubt. You will frequently find the same motives."
+        },
+        {
+          type: "heading",
+          level: 3,
+          text: "Step 3: Opportunity (where your interest and strengths can work out)"
+        },
+        {
+          type: "paragraph",
+          text: "Opportunity: does it exist — real roles, real career path and real ways to grow? It is the place where you study without thinking."
+        },
+        {
+          type: "paragraph",
+          text: "Do three quick checks:"
+        },
+        {
+          type: "list",
+          items: [
+            "Role check: What are some job titles present in this space?",
+            "Path check: Which courses or degrees are the paths?",
+            "Skill check: What are the skills that those jobs require (communication, coding, lab work, portfolios, internships)?"
+          ]
+        },
+        {
+          type: "paragraph",
+          text: "You do not require the absolute assurance. You must have some assurance that you are not down a dead end."
+        },
+        {
+          type: "heading",
+          level: 3,
+          text: "Step 4: Reality check (time, money, fit and flexibility)"
+        },
+        {
+          type: "paragraph",
+          text: "This step keeps you grounded. Ask:"
+        },
+        {
+          type: "list",
+          items: [
+            "Does my family have the money to support this plan (coaching, traveling, and devices, and time)?",
+            "Does this course require the type of study that I have (heavy theory, heavy practice, lots of reading)?",
+            "What do I do in case I fail to get my best college?",
+            "I can change later, or is it a non-reconfigurable track?"
+          ]
+        },
+        {
+          type: "paragraph",
+          text: "A friendly attitude: do not be searching as to the single best course. Take a good path in order to make changes."
+        },
+        {
+          type: "heading",
+          level: 2,
+          text: "What to do when you want to communicate with parents and their expectation is not what you are interested in"
+        },
+        {
+          type: "paragraph",
+          text: "Parents tend to push to an extreme because of one thing, safety. They are afraid of uncertain earnings, remorse and disapproval. Saying that you do not want this, they will hear risk. When you present a plan, they listen to maturity."
+        },
+        {
+          type: "paragraph",
+          text: "Try this approach:"
+        },
+        {
+          type: "heading",
+          level: 3,
+          text: "Begin with respect, not disobedience"
+        },
+        {
+          type: "paragraph",
+          text: "Have it your way: \"I understand the reason why you want me to select X. You want me to be secure.\""
+        },
+        {
+          type: "heading",
+          level: 3,
+          text: "Be interested and prove it"
+        },
+        {
+          type: "paragraph",
+          text: "Rather than \"I like psychology,\" state, \"I read about it, I attended lectures, I talked with one senior about careers.\""
+        },
+        {
+          type: "heading",
+          level: 3,
+          text: "Provide a detailed strategy (timelines)"
+        },
+        {
+          type: "paragraph",
+          text: "Example: \"I want to try option Y. By this date, I will have applied to such colleges, and I will have option X as my back up.\""
+        },
+        {
+          type: "heading",
+          level: 3,
+          text: "Discuss results, not categorizations"
+        },
+        {
+          type: "paragraph",
+          text: "There are parents who become stagnant on course names. Move to jobs and skills: this course results in these positions, this salary scale and these exams."
+        },
+        {
+          type: "heading",
+          level: 3,
+          text: "Ask for a trial window"
+        },
+        {
+          type: "paragraph",
+          text: "Ask 30 to 45 days to do research, converse with folks in the field and deliver back an ultimate shortlist."
+        },
+        {
+          type: "paragraph",
+          text: "In the event the discussion becomes emotional, stop it. A second conversation is a peaceful conversation that out-beats a dramatic first talk."
+        },
+        {
+          type: "heading",
+          level: 2,
+          text: "Gap year after 12th: when it assists and when it is a bad idea"
+        },
+        {
+          type: "paragraph",
+          text: "Smart is only possible when there is a structure in a gap year. Otherwise, it becomes a stress, scrolling, and guilt."
+        },
+        {
+          type: "heading",
+          level: 3,
+          text: "A gap year can be a good idea if:"
+        },
+        {
+          type: "list",
+          items: [
+            "There is a defined goal (entrance exam attempt, portfolio, skill training)",
+            "You will not need to push yourself to follow a routine",
+            "You need a brain re-set following burnout",
+            "You strategize tangible deliverables (mock exams, initiatives, internships, qualifications)"
+          ]
+        },
+        {
+          type: "heading",
+          level: 3,
+          text: "A gap year is a bad idea if:"
+        },
+        {
+          type: "list",
+          items: [
+            "You are doing it to get lost with no day-in day-out plan",
+            "You end up making no decisions because you do not want to be wrong",
+            "You become lonely and your motivation goes down at home",
+            "Back up plans lose strength because of deadlines missed"
+          ]
+        },
+        {
+          type: "paragraph",
+          text: "When you have a gap year, make it like a job. Set hours, targets on a weekly basis and monthly reviews."
+        },
+        {
+          type: "heading",
+          level: 2,
+          text: "Learning: life is not about thinking, it is about doing"
+        },
+        {
+          type: "paragraph",
+          text: "You have not decided what to do after 12th, then there is no need to wait and see. Build it. Four steps to follow, pitfalls to avoid, and, also, involve your parents in a plan that they can rely on. It does not necessarily have to be your final step but rather sensible and sincere."
+        }
+      ]
     }
   };
 
@@ -601,10 +915,13 @@ const BlogPost = () => {
   if (!post) {
     return (
       <div className="min-h-screen">
+        <Helmet>
+          <title>Blog Post Not Found | Campus Career Connect</title>
+        </Helmet>
         <Header />
-        <main className="pt-24 pb-20">
+        <main className="pt-20 pb-12">
           <div className="container mx-auto px-4 text-center">
-            <h1 className="text-4xl font-bold text-primary mb-4">Blog Post Not Found</h1>
+            <h1 className="text-4xl font-bold text-primary mb-3">Blog Post Not Found</h1>
             <Link to="/blog">
               <Button>Back to Blog</Button>
             </Link>
@@ -623,7 +940,7 @@ const BlogPost = () => {
           return (
             <HeadingTag
               key={index}
-              className={`font-bold text-primary mb-4 mt-8 ${
+              className={`font-bold text-primary mb-2 mt-4 ${
                 item.level === 2
                   ? "text-3xl"
                   : item.level === 3
@@ -636,13 +953,13 @@ const BlogPost = () => {
           );
         case "paragraph":
           return (
-            <p key={index} className="text-muted-foreground mb-4 leading-relaxed text-lg">
+            <p key={index} className="text-muted-foreground mb-2 leading-relaxed text-lg">
               {item.text}
             </p>
           );
         case "list":
           return (
-            <ul key={index} className="list-disc pl-6 mb-6 space-y-2">
+            <ul key={index} className="list-disc pl-6 mb-4 space-y-2">
               {item.items.map((listItem: string, listIndex: number) => (
                 <li key={listIndex} className="text-muted-foreground leading-relaxed">
                   {listItem}
@@ -652,7 +969,7 @@ const BlogPost = () => {
           );
         case "intro":
           return (
-            <p key={index} className="text-xl text-foreground mb-6 leading-relaxed font-medium">
+            <p key={index} className="text-xl text-foreground mb-4 leading-relaxed font-medium">
               {item.text}
             </p>
           );
@@ -662,12 +979,74 @@ const BlogPost = () => {
     });
   };
 
+  const blogUrl = `https://campuscareerconnect.com/blog/${slug}`;
+  // Use blog-specific images or fallback
+  const blogImageMap: Record<string, string> = {
+    "best-career-counselling-platform-2025": "https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=1200&h=630&fit=crop&q=80",
+    "career-guidance-right-college-decision": "https://images.unsplash.com/photo-1498243691581-b145c3f54a5a?w=1200&h=630&fit=crop&q=80",
+    "confused-what-to-do-after-12th": "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=1200&h=630&fit=crop&q=80"
+  };
+  const blogImage = blogImageMap[slug || ""] || post.image || "https://campuscareerconnect.com/hero-image.jpg";
+
   return (
     <div className="min-h-screen">
+      <Helmet>
+        <title>{post.title} | Campus Career Connect Blog</title>
+        <meta name="description" content={post.metaDescription} />
+        <meta name="keywords" content={`${post.category}, career guidance, college admission, B.Tech admission, ${post.title}`} />
+        
+        {/* Open Graph */}
+        <meta property="og:type" content="article" />
+        <meta property="og:url" content={blogUrl} />
+        <meta property="og:title" content={post.title} />
+        <meta property="og:description" content={post.metaDescription} />
+        <meta property="og:image" content={blogImage} />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:site_name" content="Campus Career Connect" />
+        
+        {/* Twitter */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:url" content={blogUrl} />
+        <meta name="twitter:title" content={post.title} />
+        <meta name="twitter:description" content={post.metaDescription} />
+        <meta name="twitter:image" content={blogImage} />
+        
+        {/* Article Schema */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BlogPosting",
+            "headline": post.title,
+            "description": post.metaDescription,
+            "image": blogImage,
+            "datePublished": post.date,
+            "dateModified": post.date,
+            "author": {
+              "@type": "Organization",
+              "name": "Campus Career Connect"
+            },
+            "publisher": {
+              "@type": "Organization",
+              "name": "Campus Career Connect",
+              "logo": {
+                "@type": "ImageObject",
+                "url": "https://campuscareerconnect.com/ccc-logo.jpeg"
+              }
+            },
+            "mainEntityOfPage": {
+              "@type": "WebPage",
+              "@id": blogUrl
+            }
+          })}
+        </script>
+        
+        <link rel="canonical" href={blogUrl} />
+      </Helmet>
       <Header />
-      <main className="pt-24 pb-20">
+      <main className="pt-20 pb-12">
         {/* Back Button */}
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 mb-8">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 mb-4">
           <Link to="/blog">
             <Button variant="ghost" className="gap-2">
               <ArrowLeft className="w-4 h-4" />
@@ -679,16 +1058,16 @@ const BlogPost = () => {
         {/* Blog Post Content */}
         <article className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
           {/* Header */}
-          <header className="mb-8">
-            <div className="mb-4">
+          <header className="mb-4">
+            <div className="mb-2">
               <span className="px-4 py-2 bg-primary/10 text-primary rounded-full text-sm font-medium">
                 {post.category}
               </span>
             </div>
-            <h1 className="text-4xl md:text-5xl font-bold text-primary mb-4 leading-tight">
+            <h1 className="text-4xl md:text-5xl font-bold text-primary mb-2 leading-tight">
               {post.title}
             </h1>
-            <div className="flex flex-wrap items-center gap-6 text-muted-foreground mb-6">
+            <div className="flex flex-wrap items-center gap-6 text-muted-foreground mb-4">
               <div className="flex items-center gap-2">
                 <Calendar className="w-5 h-5" />
                 <span>
@@ -712,12 +1091,12 @@ const BlogPost = () => {
           </div>
 
           {/* CTA Card */}
-          <Card className="mt-12 border-2 border-primary/20 bg-primary/5">
-            <CardContent className="p-8 text-center">
-              <h3 className="text-2xl font-bold text-primary mb-4">
+          <Card className="mt-6 border-2 border-primary/20 bg-primary/5">
+            <CardContent className="p-6 text-center">
+              <h3 className="text-2xl font-bold text-primary mb-3">
                 Ready to Start Your Career Journey?
               </h3>
-              <p className="text-muted-foreground mb-6">
+              <p className="text-muted-foreground mb-4">
                 Get expert career guidance and college admission support from Campus Career Connect
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">

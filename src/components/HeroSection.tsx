@@ -30,7 +30,7 @@ const HeroSection = () => {
           </h1>
 
           {/* Subheadline */}
-          <p className="text-lg md:text-xl text-muted-foreground mb-10 max-w-4xl mx-auto font-medium leading-relaxed text-balance">
+          <p className="text-lg md:text-xl text-muted-foreground mb-6 max-w-4xl mx-auto font-medium leading-relaxed text-balance">
           <b>Your bridge from college admission to career success.
             <br />
           </b>
@@ -39,7 +39,7 @@ Learn, Train, and Get Placed with CCC.
 
           {/* Stats Row */}
           <div
-            className="flex flex-col sm:flex-row items-center justify-center gap-8 mb-12"
+            className="flex flex-col sm:flex-row items-center justify-center gap-8 mb-8"
           >
             {/* Top Colleges */}
             <div className="flex items-center gap-3 text-foreground hover:scale-105 transition-transform">

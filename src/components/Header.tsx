@@ -1,7 +1,7 @@
 import { useState, useEffect, useCallback, useRef } from "react";
 import { Menu, X, Phone, MessageCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { useLocation, Link } from "react-router-dom";
+import { useLocation, Link, useNavigate } from "react-router-dom";
 import { env } from "@/config/env";
 
 declare global {
@@ -57,6 +57,7 @@ const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const pixelReady = useRef(false);
   const location = useLocation(); // for SPA route tracking
+  const navigate = useNavigate();
 
   // Initialize Meta Pixel once
   useEffect(() => {
@@ -181,8 +182,8 @@ const Header = () => {
             {/* Center: Promo text - responsive sizing */}
             <div className="flex-1 text-center px-2 lg:px-4">
               <span className="text-xs sm:text-sm lg:text-base font-medium">
-                <span className="hidden lg:inline">🚀 Admissions Open for 2025! | Get Free Counseling & College Guidance</span>
-                <span className="lg:hidden">🚀 Admissions Open 2025! | Free Counseling</span>
+                <span className="hidden lg:inline">🚀 Admissions Open for 2026! | Get Free Counseling & College Guidance</span>
+                <span className="lg:hidden">🚀 Admissions Open 2026! | Free Counseling</span>
               </span>
             </div>
 
@@ -232,10 +233,25 @@ const Header = () => {
               const style = { minWidth: "auto", textAlign: "center" as const };
               
               if (isHashLink) {
+                const handleHashClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+                  e.preventDefault();
+                  // If not on home page, navigate to home first, then scroll
+                  if (location.pathname !== '/') {
+                    navigate(`/${link.href}`);
+                  } else {
+                    // Already on home page, just scroll
+                    const element = document.querySelector(link.href);
+                    if (element) {
+                      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                  }
+                };
+                
                 return (
                   <a
                     key={link.name}
                     href={link.href}
+                    onClick={handleHashClick}
                     className={className}
                     style={style}
                   >
@@ -317,11 +333,26 @@ const Header = () => {
               const className = "text-foreground hover:text-primary font-medium transition-colors duration-200 py-2 px-4 rounded-xl hover:bg-muted focus:outline-none focus:ring-2 focus:ring-primary";
               
               if (isHashLink) {
+                const handleHashClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+                  e.preventDefault();
+                  setIsMenuOpen(false);
+                  // If not on home page, navigate to home first, then scroll
+                  if (location.pathname !== '/') {
+                    navigate(`/${link.href}`);
+                  } else {
+                    // Already on home page, just scroll
+                    const element = document.querySelector(link.href);
+                    if (element) {
+                      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                  }
+                };
+                
                 return (
                   <a
                     key={link.name}
                     href={link.href}
-                    onClick={() => setIsMenuOpen(false)}
+                    onClick={handleHashClick}
                     className={className}
                     tabIndex={isMenuOpen ? 0 : -1}
                   >
