@@ -24,7 +24,7 @@ const blogPosts: BlogPost[] = [
     date: "2025-01-15",
     readTime: "8 min read",
     category: "Career Guidance",
-    image: "https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=800&h=600&fit=crop&q=80",
+    image: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800&h=600&fit=crop",
   },
   {
     id: "career-guidance-right-college-decision",
@@ -33,16 +33,7 @@ const blogPosts: BlogPost[] = [
     date: "2025-01-20",
     readTime: "10 min read",
     category: "Right College?",
-    image: "https://images.unsplash.com/photo-1498243691581-b145c3f54a5a?w=800&h=600&fit=crop&q=80",
-  },
-  {
-    id: "confused-what-to-do-after-12th",
-    title: "Confused What to Do After 12th? An Easy Way of Selecting the Right Path",
-    description: "Your score was high, everybody told you congratulations, and you had a feeling that your brain is frozen. The following question comes quick: college, course, entrance exams and future. You feel lost because you do not know what to do with your life after 12th, but you are not lagging. Discover a realistic 4-step decision model (Interest, Strength, Opportunity, Reality Check) to make the right choice and learn how to communicate with parents effectively.\n\nAvoid the 5 bad ways students pick courses and find your path even without being completely clear about your future.",
-    date: "2025-01-25",
-    readTime: "12 min read",
-    category: "Career Guidance",
-    image: "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=800&h=600&fit=crop&q=80",
+    image: "https://images.unsplash.com/photo-1509062522246-3755977927d7?w=800&h=600&fit=crop",
   },
 ];
 

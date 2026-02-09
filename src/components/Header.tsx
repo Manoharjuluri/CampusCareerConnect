@@ -103,12 +103,14 @@ const Header = () => {
   }, []);
 
   const navLinks = [
-    { name: "Home", href: "#home" },
-    { name: "About Us", href: "#about" },
+    { name: "Home", href: "/" },
+    { name: "Courses", href: "/courses" },
+    { name: "About", href: "#about" },
+    { name: "Contact", href: "#contact" },
+    { name: "Counselors", href: "#contact" },
+    { name: "Blog", href: "/blog" },
     { name: "Top Colleges", href: "#partners" },
     { name: "Skill Training", href: "#trainlance" },
-    { name: "Blog", href: "/blog" },
-    { name: "Get Support", href: "#contact" },
   ];
 
   const whyUsPoints = [

@@ -15,6 +15,7 @@ import ScheduleCall from "./pages/ScheduleCall";
 import MoreColleges from "./pages/Morecolleges";
 import Blog from "./pages/Blog";
 import BlogPost from "./pages/BlogPost";
+import Courses from "./pages/Courses";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -43,6 +44,7 @@ const App = () => (
               <Route path="/morecolleges" element={<MoreColleges />} />
               <Route path="/blog" element={<Blog />} />
               <Route path="/blog/:slug" element={<BlogPost />} />
+              <Route path="/courses" element={<Courses />} />
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
               <Route path="*" element={<NotFound />} />
             </Routes>
